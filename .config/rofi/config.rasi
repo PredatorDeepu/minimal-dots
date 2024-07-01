@@ -1,0 +1,16 @@
+configuration {
+	modes: "drun,run";
+	font: "Monofur Nerd Font 10";
+	location: 3;
+	yoffset: 5;
+	xoffset: -5;
+	terminal: "foot";
+	sidebar-mode: true;
+  	
+	timeout {
+      	action: "kb-cancel";
+      	delay:  10;
+	}
+}
+
+@theme "dark"

@@ -1,0 +1,5 @@
+2024-06-26 20:53:29.414 [warning] Creation of workbench contribution 'workbench.contrib.explorerViewletViews' took 25ms.
+2024-06-26 20:53:29.483 [warning] Creation of workbench contribution 'workbench.contrib.preferencesActions' took 29ms.
+2024-06-26 20:53:31.090 [info] Started local extension host with pid 4979.
+2024-06-26 20:53:40.255 [info] [perf] Render performance baseline is 173ms
+2024-06-26 20:53:40.754 [warning] Creation of workbench contribution 'workbench.contrib.dynamicWindowConfiguration' took 127ms.

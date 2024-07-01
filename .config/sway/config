@@ -1,0 +1,162 @@
+include /etc/sway/config.d/*
+include /etc/sway/config-vars.d/*
+
+set $gap_outer 4
+set $gap_inner 10
+set $mod Mod4
+set $left h
+set $down j
+set $up k
+set $right l
+set $term foot
+set $menu rofi -show drun | xargs swaymsg exec --
+
+#wallpaper
+output * bg ~/walls/light/"$(ls walls/light | shuf -n1)" fill
+
+# Start a terminal
+    bindsym $mod+q exec $term
+
+    # Kill focused windows
+    bindsym $mod+c kill
+
+    # Start your launcher
+    bindsym $mod+d exec $menu
+
+   # Drag floating windows by holding down $mod and left mouse button.
+    floating_modifier $mod normal
+
+    # Reload the configuration file
+    bindsym $mod+Shift+c reload
+
+    # wlogout
+    bindsym $mod+Shift+e exec wlogout
+
+# Moving around:
+
+    # Move your focus around
+    bindsym $mod+$left focus left
+    bindsym $mod+$down focus down
+    bindsym $mod+$up focus up
+    bindsym $mod+$right focus right
+    # Or use $mod+[up|down|left|right]
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # Move the focused window with the same, but add Shift
+    bindsym $mod+Shift+$left move left
+    bindsym $mod+Shift+$down move down
+    bindsym $mod+Shift+$up move up
+    bindsym $mod+Shift+$right move right
+    # Ditto, with arrow keys
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+#
+# Workspaces:
+#
+    # Switch to workspace
+    bindsym $mod+1 workspace number 1
+    bindsym $mod+2 workspace number 2
+    bindsym $mod+3 workspace number 3
+    bindsym $mod+4 workspace number 4
+    bindsym $mod+5 workspace number 5
+    bindsym $mod+6 workspace number 6
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number 1
+    bindsym $mod+Shift+2 move container to workspace number 2
+    bindsym $mod+Shift+3 move container to workspace number 3
+    bindsym $mod+Shift+4 move container to workspace number 4
+    bindsym $mod+Shift+5 move container to workspace number 5
+    bindsym $mod+Shift+6 move container to workspace number 6
+
+ # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
+#
+# Layout stuff:
+#
+    # You can "split" the current object of your focus with
+    # $mod+b or $mod+v, for horizontal and vertical splits
+    # respectively.
+    bindsym $mod+b splith
+    bindsym $mod+v splitv
+
+    # Switch the current container between different layout styles
+    bindsym $mod+shift+s layout stacking
+    bindsym $mod+w layout tabbed
+    bindsym $mod+e layout toggle split
+
+    # Make the current focus fullscreen
+    bindsym $mod+f fullscreen
+
+    # Toggle the current focus between tiling and floating mode
+    bindsym $mod+s floating toggle
+
+    # Swap focus between the tiling area and the floating area
+    bindsym $mod+space focus mode_toggle
+
+    # Move focus to the parent container
+    bindsym $mod+a focus parent
+#
+# Scratchpad:
+#
+    # Sway has a "scratchpad", which is a bag of holding for windows.
+    # You can send windows there and get them back later.
+
+    # Move the currently focused window to the scratchpad
+    bindsym $mod+Shift+minus move scratchpad
+
+    # Show the next scratchpad window or hide the focused scratchpad window.
+    # If there are multiple scratchpad windows, this command cycles through them.
+    bindsym $mod+minus scratchpad show
+#
+# Resizing containers:
+#
+mode "resize" {
+    bindsym $left resize shrink width 10px
+    bindsym $down resize grow height 10px
+    bindsym $up resize shrink height 10px
+    bindsym $right resize grow width 10px
+
+    # Ditto, with arrow keys
+    bindsym Left resize shrink width 10px
+    bindsym Down resize grow height 10px
+    bindsym Up resize shrink height 10px
+    bindsym Right resize grow width 10px
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+
+bindsym $mod+r mode "resize"
+
+default_border none
+client.focused #eeeeee #cccccc #000000 #dddddd
+gaps outer $gap_outer
+gaps inner $gap_inner
+
+#screenshot and save to homedir
+bindsym print exec grim && notify-send -i "$(ls -t | head -n1)" "screenshot saved"
+bindsym shift+print exec grim -g "$(slurp)" && notify-send -i "$(ls -t | head -n1)" "screenshot saved"
+
+#screenshot and copy to clipboard
+bindsym ctrl+print exec grim - | wl-copy && wl-paste > ~/.cache/tmp/$(date +%s) && notify-send -i ~/.cache/tmp/$(ls -t ~/.cache/tmp | head -n1) "Screenshot Copied " "to Clipboard" && rm ~/.cache/tmp/*
+bindsym ctrl+shift+print exec grim -g "$(slurp)" - | wl-copy && wl-paste > ~/.cache/tmp/$(date +%s) && notify-send -i ~/.cache/tmp/$(ls -t ~/.cache/tmp | head -n1) "Screenshot Copied " "to Clipboard" && rm ~/.cache/tmp/*
+
+#start redshift 
+bindsym $mod+Shift+r exec night.sh
+
+#open swaync
+bindsym $mod+n exec swaync-client -t
+
+#get current time
+bindsym $mod+t exec notify-send -i ~/.icons/clock-time-four-custom\(1\).png $(date +%I:%M%p) $(date +%d-%m-%Y-%A)
+
+#launch stuff
+exec swaync &
+
