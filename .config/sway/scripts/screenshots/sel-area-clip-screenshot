@@ -1,0 +1,3 @@
+grim -g "$(slurp)" - | wl-copy && wl-paste > ~/.cache/tmp/$(date +%s) && notify-send -i ~/.cache/tmp/$(ls -t ~/.cache/tmp | head -n1) "Screenshot Copied " "to Clipboard" && rm ~/.cache/tmp/*
+
+

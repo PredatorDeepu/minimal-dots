@@ -1,0 +1,1 @@
+grim ~/media/screenshots/$(date +%s).png && notify-send -i ~/media/screenshots/"$(ls -t ~/media/screenshots | head -n1)" "screenshot saved"

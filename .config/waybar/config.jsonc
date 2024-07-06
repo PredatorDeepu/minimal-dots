@@ -1,0 +1,93 @@
+{
+  "layer": "top",
+  "position": "left",
+  "width": -10,
+  "margin-right": 0,
+  "spacing": 6,
+
+  "modules-left": ["custom/launcher", "sway/workspaces", "sway/mode"],
+  "modules-center": ["custom/music"],
+  "modules-right": ["tray","clock"],
+
+  "sway/window": {
+    "max-length": 150,
+    "rotate": 270
+  },
+  "sway/mode": {
+    "tooltip": true,
+    "format": "<span weight=\"bold\">{}</span>",
+    "rotate": 270
+  },
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "persistent-workspaces": {
+      "1": [],
+      "2": [],
+      "3": [],
+      "4": [],
+      "5": [],
+      "6": []
+    }
+  },
+  
+  "memory": {
+    "interval": 10,
+    "format": "  {percentage}",
+    "states": {
+      "ok": 80,
+      "heavy": 100,
+    },
+      "rotate": 270,
+
+  },
+  "cpu": {
+    "interval": 5,
+    "tooltip": false,
+    "states": {
+        "ok": 80,
+	"heavy": 100
+    },
+    "format": "<span color='#e78a4e'> </span> {usage}",
+    "rotate": 270,
+  },
+  "clock": {
+    "tooltip": false,
+    "format": "{:%R}",
+    "rotate": 270
+  },
+  "tray": {
+    "tooltip": false,
+    // "icon-size": 16,
+    "spacing": 0
+  },
+
+	"custom/launcher": {
+		"format": "<big>󰣇 </big>",
+		"on-click": "rofi -show drun",
+		"tooltip": false,
+	},
+
+	"custom/music": {
+    "format": "{icon}{}",
+    "format-icons": {
+        // "Playing": " ", // Uncomment if not using caway
+        "Paused": " ",
+        "Stopped": "" // This stop symbol is RTL. So &#x202d; is left-to-right override.
+    },
+    "escape": true,
+    "tooltip": true,
+    "exec": "~/.config/waybar/modules/caway",
+    "return-type": "json",
+    "on-click": "playerctl play-pause",
+    "on-scroll-up": "playerctl previous",
+    "on-scroll-down": "playerctl next",
+    "on-click-right": "g4music",
+    "max-length": 35,
+   "rotate": 270 
+}
+
+
+}
+
+

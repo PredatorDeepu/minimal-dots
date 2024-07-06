@@ -141,12 +141,12 @@ gaps outer $gap_outer
 gaps inner $gap_inner
 
 #screenshot and save to homedir
-bindsym print exec grim && notify-send -i "$(ls -t | head -n1)" "screenshot saved"
-bindsym shift+print exec grim -g "$(slurp)" && notify-send -i "$(ls -t | head -n1)" "screenshot saved"
+bindsym print exec .config/sway/scripts/screenshots/screenshot-save
+bindsym shift+print exec .config/sway/scripts/screenshots/sel-area-screenshot-save
 
-#screenshot and copy to clipboard
-bindsym ctrl+print exec grim - | wl-copy && wl-paste > ~/.cache/tmp/$(date +%s) && notify-send -i ~/.cache/tmp/$(ls -t ~/.cache/tmp | head -n1) "Screenshot Copied " "to Clipboard" && rm ~/.cache/tmp/*
-bindsym ctrl+shift+print exec grim -g "$(slurp)" - | wl-copy && wl-paste > ~/.cache/tmp/$(date +%s) && notify-send -i ~/.cache/tmp/$(ls -t ~/.cache/tmp | head -n1) "Screenshot Copied " "to Clipboard" && rm ~/.cache/tmp/*
+#aascreenshot and copy to clipboard
+bindsym ctrl+print exec .config/sway/scripts/screenshots/clip-screenshot
+bindsym ctrl+shift+print exec .config/sway/scripts/screenshots/sel-area-clip-screenshot
 
 #start redshift 
 bindsym $mod+Shift+r exec night.sh
@@ -159,4 +159,4 @@ bindsym $mod+t exec notify-send -i ~/.icons/clock-time-four-custom\(1\).png $(da
 
 #launch stuff
 exec swaync &
-
+exec .config/sway/scripts/bar.sh

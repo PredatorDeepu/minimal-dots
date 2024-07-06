@@ -1,0 +1,15 @@
+@define-color cc-bg #141617;
+
+.control-center {
+	background-color: @cc-bg;
+	border-radius: 0;
+}
+
+.notification{
+	border-radius: 0;
+	background-color: @cc-bg;
+}
+
+.notification-row .notification-background .notification .notification-default-action .notification-content .inline-reply .inline-reply-button:hover {
+  background: @cc-bg;
+}

@@ -1,9 +1,9 @@
 configuration {
 	modes: "drun,run";
 	font: "Monofur Nerd Font 10";
-	location: 3;
-	yoffset: 5;
-	xoffset: -5;
+	location: 1;
+	yoffset: 3;
+	xoffset: 20;
 	terminal: "foot";
 	sidebar-mode: true;
   	
