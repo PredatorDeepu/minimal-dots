@@ -100,7 +100,19 @@ button{
 	spacing: 0;
 }
 
-button-selected{
+button selected{
 	background-color: var(selected-bg);
-	text-color: var(fg);
+	border: 4px;
+	border-color: var(bg);
+}
+
+sidebar {
+	background-color: var(bg);
+	border-color: var(bg);
+	border: none;
+}
+
+spacing {
+	background-color: var(bg);
+	text-color: var(bg);
 }

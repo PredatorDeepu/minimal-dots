@@ -1,15 +1,15 @@
 configuration {
 	modes: "drun,run";
-	font: "Monofur Nerd Font 10";
+	font: "Monofur Nerd Font 9";
 	location: 1;
 	yoffset: 3;
 	xoffset: 20;
 	terminal: "foot";
 	sidebar-mode: true;
-  	
+	seperator-style: none;  	
 	timeout {
       	action: "kb-cancel";
-      	delay:  10;
+      	delay:  5;
 	}
 }
 
